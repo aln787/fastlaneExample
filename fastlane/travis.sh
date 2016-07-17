@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ -z "$TRAVIS_TAG" ]]; then exit $?; fi
+if [[ -n "$TRAVIS_TAG" ]]; then exit $?; fi
 
 
 bundle install --system
