@@ -1,5 +1,8 @@
 #!/bin/sh
 
+if [[ -z "$TRAVIS_TAG" ]]; then exit $?; fi
+
+
 bundle install --system
 if [ -z $TRAVIS ]; then require 'bundler/setup'; fi
 fastlane ios test
