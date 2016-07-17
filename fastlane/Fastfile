@@ -50,9 +50,9 @@ platform :ios do
   end
 
   after_all do | lane, options |
-    # require 'debug'
+    #require 'debug'
 
-    if lane != "test"
+    if lane.to_s != "test"
       get_build_number
       get_version_number
       add_git_tag(build_number: "#{lane_context[SharedValues::BUILD_NUMBER]}-#{lane_context[SharedValues::VERSION_NUMBER]}")
