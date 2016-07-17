@@ -1,0 +1,23 @@
+##This file contains a few common helper variables that are used across a variety of actions
+###Additional variables can be stored in the .env files
+
+app_identifier "com.alex.FastlaneExample" #Your apps bundle identifier
+apple_id "alex.niderberg@capitalone.com" #Email address that is tied to ITC and APD.
+team_id "6XZAZFL22H"  #ADP ID
+team_name "Alex Niderberg" #ADP Name
+itc_team_name "Alex Niderberg"
+itc_team_id "85452910"
+
+
+
+##Optionally switch key values like the bundle id be able to sign with multiple licences (enterprise vs app store build)
+for_platform :ios do
+  for_lane :enterprise do
+    app_identifier 'com.capitalone.entreprise.FastLaneExample'
+    ##Additionally the .env, .env.default and .env.<environment> can be used to pass required variables,
+  end
+end
+
+# Additional information:
+## Docs: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
+## Source: https://github.com/fastlane/fastlane/blob/9c0494ef5e7d71afc51c73fe0b141b02e8991d9c/credentials_manager/lib/credentials_manager/appfile_config.rb

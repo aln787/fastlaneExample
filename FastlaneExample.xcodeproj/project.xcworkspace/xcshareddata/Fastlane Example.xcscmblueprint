@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F5968749FE8290EF141F895D72DC402D6CCAC002",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F5968749FE8290EF141F895D72DC402D6CCAC002" : 0,
+    "BFF7BAF0A2E41B1EBA597F7B87F550BC01E56193" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6086FC5C-A68F-4312-8676-8388017E10BA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F5968749FE8290EF141F895D72DC402D6CCAC002" : "Fastlane%20Example\/",
+    "BFF7BAF0A2E41B1EBA597F7B87F550BC01E56193" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Fastlane Example",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Fastlane Example.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.kdc.capitalone.com\/iOS-provisioning\/Developer-Portal-Utilities.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BFF7BAF0A2E41B1EBA597F7B87F550BC01E56193"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/aln787\/SimpleCircleFastlaneExample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F5968749FE8290EF141F895D72DC402D6CCAC002"
+    }
+  ]
+}

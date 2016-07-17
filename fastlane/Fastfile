@@ -1,0 +1,50 @@
+##View documentation about available actions: `fastlane actions` or https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md#actions
+
+fastlane_version "1.47.0"
+
+default_platform :ios
+
+
+platform :ios do
+  before_all do
+    ensure_xcode_version
+    sh 'ruby -v' #Get Ruby version
+    bundle_install
+  end
+
+  desc "Run all the tests"
+  lane :test do
+    #require 'debug'
+    scan(device: "iPhone 6s (9.3)", skip_slack: !Helper.is_ci?)
+    xcov(skip_slack: !Helper.is_ci?)
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  lane :beta do
+    sh "fastlane ios test" ##Leaving this to indicate that you can include shell scripts in your Fastfile
+    ## Additionally in https://github.com/fastlane/fastlane/issues/890 Felix mentions this approach to call another lane
+    gym(scheme: "FastLane Example") # Build your app - more options available
+    pilot
+  end
+
+  desc "Add a new app to ITC and ADP"
+  lane :addNewApp do
+    produce
+  end
+
+  after_all do | lane, options |
+    # require 'debug'
+    notification(title: 'Fastlane Success', message: "For lane: '#{lane}'") unless Helper.is_ci?
+    unless ENV["SLACK_URL"].nil? || ENV["SLACK_URL"].empty? || !Helper.is_ci?
+      slack(message: "Successfully deployed new App Update for `#{CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)}`.")
+    end
+  end
+
+  error do | lane, exception, options |
+    notification(title: 'Fastlane Failed', message: "For lane: '#{lane}'") unless Helper.is_ci?
+    unless ENV["SLACK_URL"].nil? || ENV["SLACK_URL"].empty? || !Helper.is_ci?
+      slack(message: "`#{CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)}` build failed: #{exception.message}", success: false)
+    end
+  end
+
+end

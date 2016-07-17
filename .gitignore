@@ -1,0 +1,7 @@
+FastlaneExample.xcodeproj/xcuserdata/
+FastlaneExample.xcodeproj/project.xcworkspace/xcuserdata/
+.DS_Store
+fastlane/xcov_report/
+fastlane/test_output/
+fastlane/report.xml
+

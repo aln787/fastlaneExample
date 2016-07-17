@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode7.3
+script:
+- ./fastlane/travis.sh
+
+# Travis.yml getting started: https://docs.travis-ci.com/user/for-beginners
+# Travis OS X versions: https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version
+# Great Travis + Fastlane guide: http://macoscope.com/blog/automate-testing-and-build-delivery/#more
