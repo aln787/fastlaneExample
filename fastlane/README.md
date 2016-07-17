@@ -21,6 +21,11 @@ Submit a new Beta Build to Apple TestFlight
 fastlane ios addNewApp
 ```
 Add a new app to ITC and ADP
+### ios distributionPrep
+```
+fastlane ios distributionPrep
+```
+Create signing identities
 
 ----
 
