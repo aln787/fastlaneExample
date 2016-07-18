@@ -1,9 +1,6 @@
 ##View documentation about available actions: `fastlane actions` or https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md#actions
-
-fastlane_version "1.47.0"
-
+fastlane_version "1.94.0"
 default_platform :ios
-
 
 platform :ios do
   before_all do
@@ -14,27 +11,21 @@ platform :ios do
 
   desc "Run all the tests"
   lane :test do
-    #require 'debug'
     scan(device: "iPhone 6s (9.3)", skip_slack: !Helper.is_ci?)
     xcov(skip_slack: !Helper.is_ci?)
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
-    #sh "fastlane ios test" ##Leaving this to indicate that you can include shell scripts in your Fastfile
-    ## Additionally in https://github.com/fastlane/fastlane/issues/890 Felix mentions this approach to call another lane
-    # cert
-    # sigh
-    # update_app_identifier
-    #update_info_plist
-    #update_project_code_signing
-    #update_project_provisioning
+    #sh "fastlane ios test"  ## Felix mentions this approach to call another lane: https://github.com/fastlane/fastlane/issues/890
+    #cert
+   # sigh
+    update_app_identifier
+    #update_info_plist, update_project_code_signing, update_project_provisioning
     #update_project_team
-
-    increment_build_number
-    #increment_version_number
-    #latest_testflight_build_number
-    # gym
+    #increment_build_number
+    #increment_version_number, latest_testflight_build_number
+    #gym
     #pilot
   end
 
@@ -49,16 +40,27 @@ platform :ios do
     #badge
   end
 
+  desc "Prepare an enterprise hockey App build - (Call using the `fastlane hockeyApp --env enterprise`)"
+  lane :hockeyApp do
+    produce
+    cert
+    sigh
+    update_app_identifier
+    update_project_team
+    increment_build_number
+    gym
+    lastCommitMessage = sh("git log -1 --pretty=%B")
+    hockey(notes: lastCommitMessage)
+  end
+
   after_all do | lane, options |
     #require 'debug'
-
-    if lane.to_s != "test"
+    if lane.to_s == "beta"
       get_build_number
       get_version_number
       add_git_tag(build_number: "#{lane_context[SharedValues::BUILD_NUMBER]}-#{lane_context[SharedValues::VERSION_NUMBER]}")
       push_git_tags
     end
-
     notification(title: 'Fastlane Success', message: "For lane: '#{lane}'") unless Helper.is_ci?
     unless ENV["SLACK_URL"].nil? || ENV["SLACK_URL"].empty? || !Helper.is_ci?
       slack(message: "Successfully deployed new App Update for `#{CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)}`.")
@@ -71,5 +73,4 @@ platform :ios do
       slack(message: "`#{CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)}` build failed: #{exception.message}", success: false)
     end
   end
-
 end

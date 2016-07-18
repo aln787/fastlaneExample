@@ -1,12 +1,15 @@
 ##Branch Health
-####Testing ![](https://api.travis-ci.org/aln787/SimpleCircleFastlaneExample.svg?branch=test)
+####Testing ![](https://travis-ci.org/aln787/fastlaneExample.svg?branch=master)
 
 ##Getting Started _(If you don't have Ruby 2.3.0 or bundler installed, follow the steps below)_
 ```
 Git clone https://github.com/aln787/SimpleCircleFastlaneExample.git
+rbenv local 2.3.0
+rbenv rehash
 bundle install
 fastlane ios test
-
+fastlane ios beta
+fastlane hockeyApp --env enterprise
 ```
 
 

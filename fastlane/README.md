@@ -26,6 +26,11 @@ Add a new app to ITC and ADP
 fastlane ios distributionPrep
 ```
 Create signing identities
+### ios hockeyApp
+```
+fastlane ios hockeyApp
+```
+Prepare an enterprise hockey App build - (Call using the `fastlane hockeyApp --env enterprise`)
 
 ----
 
