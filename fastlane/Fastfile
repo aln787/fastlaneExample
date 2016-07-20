@@ -18,15 +18,15 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
     #sh "fastlane ios test"  ## Felix mentions this approach to call another lane: https://github.com/fastlane/fastlane/issues/890
-    #cert
-   # sigh
+    cert
+    sigh
     update_app_identifier
     #update_info_plist, update_project_code_signing, update_project_provisioning
-    #update_project_team
-    #increment_build_number
+    update_project_team
+    increment_build_number
     #increment_version_number, latest_testflight_build_number
-    #gym
-    #pilot
+    gym
+    pilot
   end
 
   desc "Add a new app to ITC and ADP"
@@ -42,7 +42,7 @@ platform :ios do
 
   desc "Prepare an enterprise hockey App build - (Call using the `fastlane hockeyApp --env enterprise`)"
   lane :hockeyApp do
-    produce
+    #produce
     cert
     sigh
     update_app_identifier
