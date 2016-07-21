@@ -1,7 +1,7 @@
 ##This file contains a few common helper variables that are used across a variety of actions
 ###Additional variables can be stored in the .env files
 
-app_identifier "com.alex.FastlaneExample" #Your apps bundle identifier
+app_identifier "com.alex.FastlaneExample2" #Your apps bundle identifier
 apple_id "alex.niderberg@capitalone.com" #Email address that is tied to ITC and APD.
 team_id "6XZAZFL22H"  #ADP ID
 team_name "Alex Niderberg" #ADP Name
@@ -11,7 +11,7 @@ itc_team_id "85452910"
 ##Switch key values like the bundle id be able to sign with multiple licences (enterprise vs app store build)
 for_platform :ios do
   for_lane :hockeyApp do
-    app_identifier "com.capitalone.entreprise.FastLaneExample"
+    app_identifier "com.capitalone.entreprise.FastlaneExample2"
     team_id "BJ5PA3R3X7"
     team_name "CAPITAL ONE SERVICES, LLC"
     ##Additionally the .env, .env.default and .env.<environment> can be used to pass required variables,
