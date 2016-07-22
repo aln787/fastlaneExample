@@ -2,26 +2,37 @@
 ####Testing ![](https://travis-ci.org/aln787/fastlaneExample.svg?branch=master)
 
 ##Getting Started _(If you don't have Ruby 2.3.0 or bundler installed, follow the steps below)_
+- Clone this repo `git clone https://github.com/aln787/fastlaneExample.git`
+- Set up dependencys
+
 ```
-Git clone https://github.com/aln787/SimpleCircleFastlaneExample.git
 rbenv local 2.3.0
 rbenv rehash
 bundle install
+```
+
+- Run Test lanes
+
+```
+fastlane ios addNewApp
 fastlane ios test
 fastlane ios beta
-fastlane hockeyApp --env enterprise
+fastlane hockeyApp --env enterprise #Requires additional configuration
 ```
 
 
 ##Installing brew / rbenv (for ruby 2.3.0) / bundler
 - >= Ruby 2.3.0 is expected
-- (Optional) Install brew [[full 10.11 instructions](https://coolestguidesontheplanet.com/installing-homebrew-on-os-x-el-capitan-10-11-package-manager-for-unix-apps/)] 
+- (Optional) Install brew [[full 10.11 install instructions](https://coolestguidesontheplanet.com/installing-homebrew-on-os-x-el-capitan-10-11-package-manager-for-unix-apps/)] 
+
 ```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 brew update
 ```
+
 - (Optional) [Install rbenv](https://github.com/rbenv/rbenv)
+
 ```
 brew install rbenv
 brew install ruby-build
@@ -30,6 +41,7 @@ rbenv global 2.3.0
 rbenv rehash
 echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
 ```
+
 - [Install bundler](http://bundler.io/)
 ```
 gem install bundler
