@@ -9,9 +9,11 @@
 rbenv local 2.3.0
 rbenv rehash
 bundle install
+git checkout noFastfile
 ```
 
-- Run Test lanes
+- Configure the project
+- Run test lanes
 
 ```
 fastlane ios addNewApp
